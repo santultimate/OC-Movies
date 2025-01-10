@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JustStreamIt</title>
+  <link rel="stylesheet" href="/Users/yac_santara/Documents/python/OC-Movies/style.css">
+</head>
+<body>
+  <header>
+    <h1>Vidéos à la demande</h1>
+  </header>
+
+  <main>
+    <!-- Section "Meilleur film" -->
+    <section id="best-movie">
+        <section id="best-movie">
+            <h2>Meilleur film</h2>
+            <div id="best-movie-container"></div>
+        </section>
+        <script>
+            // Fonction pour afficher le meilleur film
+            async function displayBestMovie() {
+                try {
+                    // Appel de l'API pour récupérer les données
+                    const response = await fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score");
+                    const data = await response.json();
+        
+                    // Vérification si des résultats existent
+                    if (data.results && data.results.length > 0) {
+                        const bestMovie = data.results[0]; // Premier film de la liste (le mieux noté)
+        
+                        // Insérer les informations du film dans le conteneur
+                        const container = document.getElementById("best-movie-container");
+                        container.innerHTML = `
+                            <img src="${bestMovie.image_url}" alt="Affiche de ${bestMovie.title}" class="movie-poster">
+                            <div class="movie-details">
+                                <h3>${bestMovie.title}</h3>
+                                <p><strong>Année :</strong> ${bestMovie.year}</p>
+                                <p><strong>Réalisateur :</strong> ${bestMovie.directors.join(", ")}</p>
+                                <p><strong>Genre :</strong> ${bestMovie.genres.join(", ")}</p>
+                                <p><strong>Note IMDb :</strong> ${bestMovie.imdb_score}</p>
+                                <p>${bestMovie.description || "Aucune description disponible."}</p>
+                                <button onclick="showMovieDetails(${bestMovie.id})">Voir les détails</button>
+                            </div>
+                        `;
+                    } else {
+                        console.error("Aucun film trouvé.");
+                    }
+                } catch (error) {
+                    console.error("Erreur lors de la récupération des données :", error);
+                }
+            }
+        
+            // Appel automatique de la fonction lorsque le DOM est chargé
+            document.addEventListener("DOMContentLoaded", () => {
+                displayBestMovie();
+            });
+        </script>
+        <section id="categories">
+            <h2>Films par catégorie</h2>
+            <div id="category-mystery" class="category">
+                <h3>Mystery</h3>
+                <div class="movies-container"></div>
+                <button class="load-more" data-category="Mystery">Voir au-dessus</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section "Films les mieux notés" -->
+    <section id="top-rated-movies">
+      <h2>Films les mieux notés</h2>
+      <div class="movie-carousel" id="top-movies-carousel">
+        <!-- Les films seront insérés ici dynamiquement -->
+      </div>
+    </section>
+
+    <!-- Catégories -->
+    <section id="categories">
+      <div class="category" id="category-1">
+        <h2>Mystery</h2>
+        <div class="movie-carousel"></div>
+        <button class="see-more">Voir plus</button>
+      </div>
+      <div class="category" id="category-2">
+        <h2>Catégorie 2</h2>
+        <div class="movie-carousel"></div>
+        <button class="see-more">Voir plus</button>
+      </div>
+      <div class="category" id="category-3">
+        <h2>Catégorie 3</h2>
+        <div class="movie-carousel"></div>
+        <button class="see-more">Voir plus</button>
+      </div>
+    </section>
+
+    <!-- Section "Autres catégories" -->
+    <section id="other-categories">
+      <h2>Autres</h2>
+      <select id="category-selector">
+        <option value="action">Films d'action</option>
+        <option value="comedy">Comédies</option>
+        <option value="fantasy">Films de fantasy</option>
+        <option value="horror">Films d'horreur</option>
+        <option value="sci-fi">Science-fiction</option>
+        <option value="western">Westerns</option>
+      </select>
+      <div class="movie-carousel" id="other-category-carousel"></div>
+    </section>
+  </main>
+
+  <!-- Modale pour les détails du film -->
+  <div id="modal" class="hidden">
+    <div class="modal-content">
+      <span id="close-modal">&times;</span>
+      <img id="modal-img" src="#" alt="Affiche du film">
+      <h3 id="modal-title">Titre du film</h3>
+      <p id="modal-genre">Genre : </p>
+      <p id="modal-release-date">Date de sortie : </p>
+      <p id="modal-rating">Classification : </p>
+      <p id="modal-director">Réalisateur : </p>
+      <p id="modal-actors">Acteurs : </p>
+      <p id="modal-duration">Durée : </p>
+      <p id="modal-country">Pays d'origine : </p>
+      <p id="modal-box-office">Recettes au box-office : </p>
+      <p id="modal-summary">Résumé : </p>
+    </div>
+  </div>
+
+  <script src=".js"></script>
+</body>
+</html>
