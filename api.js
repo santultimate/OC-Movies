@@ -102,6 +102,34 @@ async function displayMysteryMovies() {
         console.error("Erreur lors de la récupération des films de la catégorie Mystère :", error);
     }
 }
+// Récupérer et afficher les 6 meilleurs films d'une catégorie spécifique
+async function displayMoviesByCategory(category, containerId) {
+    try {
+        const response = await fetch(`http://localhost:8000/api/v1/titles/?genre=${category}&sort_by=-imdb_score&page_size=6`);
+        const data = await response.json();
+
+        if (data.results && data.results.length > 0) {
+            const container = document.getElementById(containerId);
+
+            container.innerHTML = data.results
+                .map(
+                    (movie) => `
+                    <div class="movie-item">
+                        <img src="${movie.image_url}" alt="Affiche de ${movie.title}" class="movie-poster">
+                        <h4>${movie.title}</h4>
+                        <button onclick="showMovieDetails(${movie.id})">Détail</button>
+                    </div>
+                `
+                )
+                .join("");
+        } else {
+            console.error(`Aucun film trouvé pour la catégorie '${category}'.`);
+        }
+    } catch (error) {
+        console.error(`Erreur lors de la récupération des films de la catégorie '${category}' :`, error);
+    }
+}
+
 
 // Afficher les détails d'un film dans la modale
 async function showMovieDetails(movieId) {
@@ -137,4 +165,7 @@ document.getElementById("close-modal").addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", () => {
     displayBestMovie();
     displayMysteryMovies();
+    displayMoviesByCategory("Mystery", "mystery-movies-container");
+    displayMoviesByCategory("Fantasy", "fantasy-movies-container");
+    displayMoviesByCategory("Drama", "drama-movies-container");    
 });
