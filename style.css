@@ -1,53 +1,199 @@
-/* styles.css */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  header {
-    text-align: center;
-    background-color: #222;
-    color: white;
-    padding: 20px;
-  }
-  
-  main {
-    padding: 20px;
-  }
-  
-  section {
-    margin-bottom: 30px;
-  }
-  
-  .movie {
-    display: flex;
-    align-items: center;
-  }
-  
-  .movie img {
-    width: 150px;
-    margin-right: 20px;
-  }
-  
-  .movie-carousel {
-    display: flex;
-    overflow-x: auto;
-  }
-  
-  .movie-carousel img {
-    width: 100px;
-    margin-right: 10px;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  @media (max-width: 768px) {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  background-color: #070707;
+  color: white;
+  padding: 20px;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+.movie {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.movie img {
+  width: 150px;
+  margin-right: 20px;
+}
+
+.movie-carousel {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.movie-carousel img {
+  width: 100px;
+  margin-right: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal {
+  opacity: 0; /* Invisible par défaut */
+  transition: opacity 0.3s ease;
+}
+
+.modal:not(.hidden) {
+  opacity: 1; /* Visible */
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  position: relative;
+}
+
+#close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+button {
+  background-color: #f8c04f; /* Couleur jaune */
+  border: none;
+  border-radius: 5px;
+  color: #070707;
+  padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #d6a33e; /* Couleur plus foncée au survol */
+}
+
+@media (max-width: 768px) {
     .movie {
-      flex-direction: column;
-      text-align: center;
+        flex-direction: column;
+        text-align: center;
     }
-  }
-  
+}
+
+/* Grille des films */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
+  gap: 20px; /* Espace entre les films */
+  margin: 20px 0;
+}
+
+/* Style des films individuels */
+.movie-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.movie-item img {
+  width: 100%;
+  height: auto;
+}
+
+.movie-item h4 {
+  margin: 10px 0;
+}
+
+.movie-item button {
+  margin: 10px 0;
+  padding: 8px 12px;
+  background-color: #f1db12cd;
+  color: rgb(5, 5, 5);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.movie-item button:hover {
+  background-color: #b93622;
+}
+/* Section du meilleur film */
+#best-movie {
+  margin: 20px 0;
+}
+
+/* Style pour le conteneur du meilleur film */
+#best-movie-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 6px solid #000000; /* Bordure noire de 6px */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #f9f9f9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#best-movie-container img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+}
+/* Détails du film */
+#best-movie-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Titre du film */
+#best-movie-details h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+/* Synopsis */
+#best-movie-details p {
+  margin: 10px 0;
+  color: #555;
+  text-align: justify;
+}
+
+/* Bouton Détails */
+#best-movie-details button {
+  align-self: start;
+  padding: 8px 12px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#best-movie-container button:hover {
+  background-color: #0056b3;
+}

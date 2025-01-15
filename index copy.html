@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JustStreamIt - Plateforme de streaming de films à la demande">
+    <title>JustStreamIt - Vidéos à la demande</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header role="banner" class="site-header">
+        <nav role="navigation" aria-label="Navigation Principale">
+            <h1>JustStreamIt</h1>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Section "Meilleur film" -->
+        <section id="best-movie">
+            <h2>Meilleur film</h2>
+            <div class="movie-item" id="best-movie-container">
+              <div id="movie-display"></div>
+          </div>
+        </section>
+
+        <!-- Section "Mystère" -->
+        <section id="category-mystery">
+            <h2 class="section-title">Top 6 des films Mystère</h2>
+            <div class="movies-grid" id="mystery-movies-container"></div>
+        </section>
+    </main>
+
+    <!-- Modale pour les détails du film -->
+    <div id="modal" class="hidden">
+        <div class="modal-content">
+            <span id="close-modal" class="modal-close">&times;</span>
+            <img id="modal-img" src="#" alt="Affiche du film">
+            <h3 id="modal-title">Titre du film</h3>
+            <p id="modal-genre">Genre : </p>
+            <p id="modal-release-date">Date de sortie : </p>
+            <p id="modal-rating">Classification : </p>
+            <p id="modal-director">Réalisateur : </p>
+            <p id="modal-actors">Acteurs : </p>
+            <p id="modal-duration">Durée : </p>
+            <p id="modal-country">Pays d'origine : </p>
+            <p id="modal-box-office">Recettes au box-office : </p>
+            <p id="modal-summary">Résumé : </p>
+        </div>
+    </div>
+
+    <script src="api.js"></script>
+</body>
+</html>
