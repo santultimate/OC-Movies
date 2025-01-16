@@ -1,157 +1,86 @@
+/* Style global */
 body {
-  font-family: Oswald, sans-serif;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #f8f9fa;
+  color: #333;
 }
 
 header {
   text-align: center;
-  background-color: #070707;
+  background-color: #1a1a1a;
   color: white;
   padding: 20px;
+}
+
+h1, h2, h3 {
+  font-weight: bold;
 }
 
 main {
   padding: 20px;
 }
 
-section {
-  margin-bottom: 30px;
-}
-
-.movie {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-  border: 1px solid #e1e1e1;
-  border-radius: 5px;
-  padding: 10px;
-  background-color: #f9f9f9;
-}
-
-.movie img {
-  width: 150px;
-  margin-right: 20px;
-}
-
-.movie-carousel {
-  display: flex;
-  overflow-x: auto;
-  padding: 10px 0;
-}
-
-.movie-carousel img {
-  width: 100px;
-  margin-right: 10px;
-}
-
-.hidden {
-  display: none;
-}
-
-.modal {
-  opacity: 0; /* Invisible par défaut */
-  transition: opacity 0.3s ease;
-}
-
-.modal:not(.hidden) {
-  opacity: 1; /* Visible */
-}
-
-.modal-content {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+/* Section des films */
+.movies-section {
   padding: 20px;
-  position: relative;
 }
 
-#close-modal {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  cursor: pointer;
-  font-size: 20px;
+.movies-section h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
 }
 
-button {
-  background-color: #f8c04f; /* Couleur jaune */
-  border: none;
-  border-radius: 5px;
-  color: #070707;
-  padding: 10px 15px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #d6a33e; /* Couleur plus foncée au survol */
-}
-
-@media (max-width: 768px) {
-    .movie {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-
-/* Grille des films */
 .movies-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
-  gap: 10px; /* Espace entre les films */
-  margin: 10px 0;
+  grid-template-columns: repeat(3, 1fr); /* Passez à 4 colonnes pour plus de films par ligne */
+  gap: 5px; /* Espacement réduit entre les films */
+  justify-content: space-between; /* Centrer la grille sur la page */
 }
-.movies-grid img {
-  max-width: 50%; /* Ne pas dépasser la largeur de leur conteneur */
-  height: auto; /* Gardez le ratio d'aspect */
-}
-/* Style des films individuels */
+
 .movie-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 200px; /* Limitez la largeur de chaque film */
+  margin: 3px; /* Centrer les items individuellement */
 }
 
 .movie-item img {
-  width: 100%;
-  height: auto;
+  max-width: 100%; /* Gardez les images dans leur conteneur */
+  height: auto; /* Conservez le ratio d'aspect */
 }
 
-.movie-item h4 {
-  margin: 10px 0;
+.movie-item:hover img {
+  max-width: 100%; /* Gardez les images dans leur conteneur */
+  height: auto; /* Conservez le ratio d'aspect */
 }
 
-.movie-item button {
-  margin: 10px 0;
-  padding: 8px 12px;
-  background-color: #f1db12cd;
-  color: rgb(5, 5, 5);
+.details-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 1em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.movie-item button:hover {
-  background-color: #b93622;
+.movie-item:hover .details-btn {
+  opacity: 1;
 }
+
 /* Section du meilleur film */
-#best-movie {
-  margin: 20px 0;
-}
-
-/* Style pour le conteneur du meilleur film */
 #best-movie-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border: 6px solid #000000; /* Bordure noire de 6px */
+  border: 6px solid #000000;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -166,28 +95,19 @@ button:hover {
   height: auto;
   border-bottom: 1px solid #ddd;
 }
-/* Détails du film */
-#best-movie-details {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
 
-/* Titre du film */
 #best-movie-details h3 {
   font-size: 1.5em;
   margin-bottom: 10px;
 }
-/* Synopsis */
+
 #best-movie-details p {
   margin: 10px 0;
   color: #555;
   text-align: justify;
 }
 
-/* Bouton Détails */
-#best-movie-details button {
+#best-movie-container button {
   align-self: start;
   padding: 8px 12px;
   background-color: #007BFF;
@@ -199,4 +119,21 @@ button:hover {
 
 #best-movie-container button:hover {
   background-color: #0056b3;
+}
+
+/* Réactivité */
+@media (max-width: 768px) {
+  .movies-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .movie-item {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .movies-grid {
+    grid-template-columns: 1fr;
+  }
 }
