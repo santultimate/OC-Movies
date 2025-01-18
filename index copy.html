@@ -8,12 +8,14 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <!-- En-tête -->
     <header class="site-header">
         <nav aria-label="Navigation Principale">
             <h1>JustStreamIt</h1>
         </nav>
     </header>
 
+    <!-- Contenu principal -->
     <main>
         <!-- Section "Meilleur film" -->
         <section id="best-movie">
@@ -25,24 +27,40 @@
 
         <!-- Section "Mystère" -->
         <section id="category-mystery">
-            <h2 class="section-title">Categorie Mystère</h2>
+            <h2 class="section-title">Catégorie Mystère</h2>
             <div class="movies-grid" id="mystery-movies-container"></div>
         </section>
 
         <!-- Section "Fantasy" -->
         <section id="category-fantasy">
-            <h2 class="section-title">Categorie Fantasy</h2>
+            <h2 class="section-title">Catégorie Fantasy</h2>
             <div class="movies-grid" id="fantasy-movies-container"></div>
         </section>
 
         <!-- Section "Drama" -->
-        <section id="category-Drama">
-            <h2 class="section-title">Categorie Drama</h2>
+        <section id="category-drama">
+            <h2 class="section-title">Catégorie Drama</h2>
             <div class="movies-grid" id="drama-movies-container"></div>
+        </section>
+
+        <!-- Section "Autres catégories" -->
+        <section id="other-categories">
+            <h2>Autres catégories</h2>
+            <!-- Sélecteur de catégories -->
+            <select id="category-selector" onchange="displayMoviesByCategory(this.value, 'other-category-carousel')">
+                <option value="action">Films d'action</option>
+                <option value="comedy">Comédies</option>
+                <option value="fantasy">Films de fantasy</option>
+                <option value="horror">Films d'horreur</option>
+                <option value="sci-fi">Science-fiction</option>
+                <option value="western">Westerns</option>
+            </select>
+            <!-- Conteneur du carrousel de films -->
+            <div class="movie-carousel" id="other-category-carousel"></div>
         </section>
     </main>
 
-    <!-- Modale pour les détails du film -->
+    <!-- Modale pour afficher les détails d'un film -->
     <div id="modal" class="hidden">
         <div class="modal-content">
             <span id="close-modal" class="modal-close">&times;</span>
@@ -60,6 +78,7 @@
         </div>
     </div>
 
+    <!-- Inclusion des scripts -->
     <script src="api.js"></script>
 </body>
 </html>
