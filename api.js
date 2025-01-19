@@ -193,10 +193,6 @@ async function showMovieDetails(movieId) {
     }
 }
 
-// Fermer la modale
-document.getElementById("close-modal").addEventListener("click", () => {
-    document.getElementById("modal").classList.add("hidden");
-});
 
 // Charger automatiquement les données lorsque la page est prête
 document.addEventListener("DOMContentLoaded", () => {
@@ -274,3 +270,23 @@ async function loadMovies(category, containerId) {
   document.addEventListener("DOMContentLoaded", () => {
     loadAllCategories();
   });
+
+  // Ouvrir la modale
+document.querySelectorAll('.movie-button, .movie-image').forEach(item => {
+    item.addEventListener('click', () => {
+        document.getElementById('modal').style.display = 'block';
+    });
+});
+
+// Fermer la modale
+document.querySelector('.close-button').addEventListener('click', () => {
+    document.getElementById('modal').style.display = 'none';
+});
+
+// Fermer la modale en cliquant à l'extérieur
+window.addEventListener('click', (event) => {
+    const modal = document.getElementById('modal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
