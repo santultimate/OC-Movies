@@ -1,85 +1,102 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="JustStreamIt - Plateforme de streaming de films à la demande">
-        <title>JustStreamIt - Vidéos à la demande</title>
-        <link rel="stylesheet" href="./style.css">
-    </head>
-    <body>
-        <header role="banner" class="site-header">
-            <nav role="navigation" aria-label="Navigation Principale">
-                <h1>JustStreamIt</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JustStreamIt - Plateforme de streaming de films à la demande">
+    <title>JustStreamIt - Vidéos à la demande</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <img src="logo.png" alt="Logo de JustStreamIt" class="logo" />
+            <h1>JustStreamIt</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">Accueil</a></li>
+                    <li><a href="#category-mystery">Mystère</a></li>
+                    <li><a href="#category-fantasy">Fantasy</a></li>
+                    <li><a href="#category-drama">Drama</a></li>
+                </ul>
             </nav>
-        </header>
+        </div>
+    </header>
 
-        <main>
-            <!-- Section "Meilleur film" -->
-            <section id="best-movie">
-                <h2>Meilleur film</h2>
-                <div id="movie-display"></div>
-            </section>
+    <main>
+        <!-- Section "Meilleur film" -->
+        <section id="best-movie" class="hero-section">
+            <div class="best-movie-container">
+                <div class="best-movie-image">
+                    <img id="best-movie-img" src="#" alt="Affiche du meilleur film">
+                </div>
+                <div class="best-movie-details">
+                    <h2 id="best-movie-title">Titre du film</h2>
+                    <p id="best-movie-genre">Genre : </p>
+                    <p id="best-movie-release-date">Date de sortie : </p>
+                    <p id="best-movie-rating">Note : </p>
+                    <p id="best-movie-summary">Résumé : </p>
+                    <button id="view-details-btn" class="cta-button">Voir les détails</button>
+                </div>
+            </div>
+        </section>
 
-            <!-- Section "Catégories" -->
-            <section id="categories">
-                <h2 class="section-title">Catégories</h2>
-                <div class="movie-carousel" id="category-1-carousel"></div>
-                    <button class="see-more" onclick="displayCategoryMovies('Mystery', 'category-1-carousel')">Voir plus</button>
-                </div>
-                <!-- Catégorie 1 -->
-                <div class="category" id="category-1">
-                    <h3>Mystery</h3>
-                    <div class="movie-carousel" id="category-1-carousel"></div>
-                    <button class="see-more" onclick="displayCategoryMovies('Mystery', 'category-1-carousel')">Voir plus</button>
-                </div>
+        <!-- Sections des catégories -->
+        <section id="category-mystery" class="movie-section">
+            <h2 class="section-title">Films Mystère</h2>
+            <div class="carousel-container">
+                <button class="carousel-button prev">&lt;</button>
+                <div class="movies-carousel" id="mystery-movies-container"></div>
+                <button class="carousel-button next">&gt;</button>
+            </div>
+        </section>
 
-                <!-- Catégorie 2 -->
-                <div class="category" id="category-2">
-                    <h3>Catégorie 2</h3>
-                    <div class="movie-carousel" id="category-2-carousel"></div>
-                    <button class="see-more" onclick="displayCategoryMovies('Category2', 'category-2-carousel')">Voir plus</button>
-                </div>
+        <section id="category-fantasy" class="movie-section">
+            <h2 class="section-title">Films Fantasy</h2>
+            <div class="carousel-container">
+                <button class="carousel-button prev">&lt;</button>
+                <div class="movies-carousel" id="fantasy-movies-container"></div>
+                <button class="carousel-button next">&gt;</button>
+            </div>
+        </section>
 
-                <!-- Catégorie 3 -->
-                <div class="category" id="category-3">
-                    <h3>Catégorie 3</h3>
-                    <div class="movie-carousel" id="category-3-carousel"></div>
-                    <button class="see-more" onclick="displayCategoryMovies('Category3', 'category-3-carousel')">Voir plus</button>
+        <section id="category-drama" class="movie-section">
+            <h2 class="section-title">Films Drama</h2>
+            <div class="carousel-container">
+                <button class="carousel-button prev">&lt;</button>
+                <div class="movies-carousel" id="drama-movies-container"></div>
+                <button class="carousel-button next">&gt;</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="modal-overlay hidden" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <button id="close-modal" class="modal-close" aria-label="Fermer">&times;</button>
+            <div class="modal-grid">
+                <div class="modal-image">
+                    <img id="modal-img" src="#" alt="Affiche du film">
                 </div>
-            </section>
-            
-            <!-- Section "Autres catégories" -->
-            <section id="other-categories">
-                <h2>Autres</h2>
-                <select id="category-selector" onchange="displayCategoryMovies(this.value, 'other-category-carousel')">
-                    <option value="action">Films d'action</option>
-                    <option value="comedy">Comédies</option>
-                    <option value="fantasy">Films de fantasy</option>
-                    <option value="horror">Films d'horreur</option>
-                    <option value="sci-fi">Science-fiction</option>
-                    <option value="western">Westerns</option>
-                </select>
-                <div class="movie-carousel" id="other-category-carousel"></div>
-            </section>
-        </main>
-        <!-- Modale pour les détails du film -->
-        <div id="modal" class="hidden">
-            <div class="modal-content">
-                <span id="close-modal"></span>
-                <img id="modal-img" src="#" alt="Affiche du film">
-                <h3 id="modal-title">Titre du film</h3>
-                <p id="modal-genre">Genre : </p>
-                <p id="modal-release-date">Date de sortie : </p>
-                <p id="modal-rating">Classification : </p>
-                <p id="modal-director">Réalisateur : </p>
-                <p id="modal-actors">Acteurs : </p>
-                <p id="modal-duration">Durée : </p>
-                <p id="modal-country">Pays d'origine : </p>
-                <p id="modal-box-office">Recettes au box-office : </p>
-                <p id="modal-summary">Résumé : </p>
+                <div class="modal-info">
+                    <h3 id="modal-title">Titre du film</h3>
+                    <div class="modal-details">
+                        <p id="modal-genre">Genre : </p>
+                        <p id="modal-release-date">Date de sortie : </p>
+                        <p id="modal-rating">Note : </p>
+                        <p id="modal-director">Réalisateur : </p>
+                        <p id="modal-actors">Acteurs : </p>
+                        <p id="modal-duration">Durée : </p>
+                        <p id="modal-country">Pays : </p>
+                        <p id="modal-box-office">Box-office : </p>
+                        <p id="modal-summary">Résumé : </p>
+                    </div>
+                </div>
             </div>
         </div>
-        <script src="api.js"></script>
-    </body>
-</html> 
+    </div>
+
+    <script src="api.js"></script>
+</body>
+</html>

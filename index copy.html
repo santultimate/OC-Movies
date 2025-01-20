@@ -69,27 +69,36 @@
                 <option value="western">Westerns</option>
             </select>
             <!-- Conteneur du carrousel de films -->
-            <div class="movie-carousel" id="other-category-carousel"></div>
+            <div class="movies-grid" id="other-category-carousel"></div>
         </section>
     </main>
 
-    <!-- Modale pour afficher les détails d'un film -->
-    <div id="modal" class="hidden">
-        <div class="modal-content">
-            <span id="close-modal" class="modal-close">&times;</span>
-            <img id="modal-img" src="#" alt="Affiche du film">
-            <h3 id="modal-title">Titre du film</h3>
-            <p id="modal-genre">Genre : </p>
-            <p id="modal-release-date">Date de sortie : </p>
-            <p id="modal-rating">Classification : </p>
-            <p id="modal-director">Réalisateur : </p>
-            <p id="modal-actors">Acteurs : </p>
-            <p id="modal-duration">Durée : </p>
-            <p id="modal-country">Pays d'origine : </p>
-            <p id="modal-box-office">Recettes au box-office : </p>
-            <p id="modal-summary">Résumé : </p>
+   <!-- Modal -->
+   <div id="modal" class="modal-overlay hidden" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-content">
+        <button id="close-modal" class="modal-close" aria-label="Fermer">&times;</button>
+        <div class="modal-grid">
+            <div class="modal-image">
+                <img id="modal-img" src="#" alt="Affiche du film">
+            </div>
+            <div class="modal-info">
+                <h3 id="modal-title">Titre du film</h3>
+                <div class="modal-details">
+                    <p id="modal-genre">Genre : </p>
+                    <p id="modal-release-date">Date de sortie : </p>
+                    <p id="modal-rating">Note : </p>
+                    <p id="modal-director">Réalisateur : </p>
+                    <p id="modal-actors">Acteurs : </p>
+                    <p id="modal-duration">Durée : </p>
+                    <p id="modal-country">Pays : </p>
+                    <p id="modal-box-office">Box-office : </p>
+                    <p id="modal-summary">Résumé : </p>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+
 
     <!-- Inclusion des scripts -->
     <script src="api.js"></script>

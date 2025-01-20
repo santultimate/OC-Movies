@@ -20,7 +20,7 @@ closeModalButton.addEventListener("click", () => {
   });
   
 // Ouvrir la modale avec les données du film
-  
+
 function openModal(movie) {
     modalImg.src = movie.image_url || "#";
     modalTitle.textContent = movie.title || "Titre indisponible";
@@ -284,24 +284,3 @@ async function loadMovies(category, containerId) {
   document.addEventListener("DOMContentLoaded", () => {
     loadAllCategories();
   });
-
-
-  // Ouvrir la modale
-document.querySelectorAll('.movie-button, .movie-image').forEach(item => {
-    item.addEventListener('click', () => {
-        document.getElementById('modal').style.display = 'block';
-    });
-});
-
-// Fermer la modale
-document.querySelector('.close-button').addEventListener('click', () => {
-    document.getElementById('modal').style.display = 'none';
-});
-
-// Fermer la modale en cliquant à l'extérieur
-window.addEventListener('click', (event) => {
-    const modal = document.getElementById('modal');
-    if (event.target === modal) {
-        modal.style.display = 'none';
-    }
-});

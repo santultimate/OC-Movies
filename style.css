@@ -240,7 +240,8 @@ main {
 .best-movie-details button {
   margin-top: 15px;
   padding: 10px 15px;
-  background-color: #eb1515;
+  background-color: #FA0B0B;
+  ;
   color: white;
   border: none;
   border-radius: 4px;
@@ -250,4 +251,116 @@ main {
 
 .best-movie-details button:hover {
   background-color: #d01313;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+/* Overlay de la modale */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Fond semi-transparent */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+/* Contenu principal de la modale */
+.modal-content {
+  background-color: #fff;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 800px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Bouton de fermeture */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.modal-close:hover {
+  transform: scale(1.1);
+  color: #d00;
+}
+
+/* Disposition en grille pour image et infos */
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Image (1/3) et texte (2/3) */
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Section image */
+.modal-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Informations sur le film */
+.modal-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-info h3 {
+  font-size: 1.8rem;
+  margin: 0 0 10px;
+  color: #222;
+}
+
+.modal-details p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+.modal-details p strong {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Réactivité pour petits écrans */
+@media (max-width: 660px) {
+  .modal-content {
+    width: 100%; /* Prend toute la largeur de l'écran */
+    max-height: 100%; /* S'étend jusqu'à la hauteur totale */
+    border-radius: 0; /* Supprime les coins arrondis pour un effet plein écran */
+  }
+
+  .modal-grid {
+    grid-template-columns: 1fr; /* Une seule colonne */
+    gap: 15px;
+  }
+
+  .modal-info h3 {
+    text-align: center;
+  }
+
+  .modal-details p {
+    text-align: center;
+  }
 }
