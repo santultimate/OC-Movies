@@ -81,17 +81,21 @@ async function displayBestMovie() {
 
         if (data.results && data.results.length > 0) {
             const bestMovie = data.results[0];
-            const container = document.getElementById("movie-display");
-
-            container.innerHTML = `
-                <img src="${bestMovie.image_url}" alt="Affiche de ${bestMovie.title}" class="movie-poster">
-                <div class="movie-details">
-                    <h3>${bestMovie.title}</h3>
-                    <p><strong>Genre :</strong> ${bestMovie.genres.join(", ")}</p>
-                    <p><strong>Note IMDb :</strong> ${bestMovie.imdb_score}</p>
-                    <p>${bestMovie.description || "Aucune description disponible."}</p>
-                    <button onclick="showMovieDetails(${bestMovie.id})">Voir les détails</button>
-                </div>
+            
+            // Mise à jour du conteneur image
+            const bestMovieImage = document.querySelector(".best-movie-image img");
+            bestMovieImage.src = bestMovie.image_url;
+            bestMovieImage.alt = `Affiche de ${bestMovie.title}`;
+            
+            // Mise à jour des détails
+            const bestMovieDetails = document.querySelector(".best-movie-details");
+            bestMovieDetails.innerHTML = `
+                <h3>${bestMovie.title}</h3>
+                <p><strong>Genre :</strong> ${bestMovie.genres.join(", ")}</p>
+                <p><strong>Date de sortie :</strong> ${bestMovie.date_published}</p>
+                <p><strong>Note IMDb :</strong> ${bestMovie.imdb_score}</p>
+                <p><strong>Résumé :</strong> ${bestMovie.description || "Aucune description disponible."}</p>
+                <button onclick="showMovieDetails(${bestMovie.id})">Voir les détails</button>
             `;
         } else {
             console.error("Aucun film trouvé pour la section 'Meilleur film'.");
@@ -99,6 +103,12 @@ async function displayBestMovie() {
     } catch (error) {
         console.error("Erreur lors de la récupération des données :", error);
     }
+}
+
+// Fonction pour afficher les détails du film dans une modale
+function showMovieDetails(movieId) {
+    // Ajouter ici le code pour ouvrir une modale et afficher les détails du film
+    console.log(`Affichage des détails pour le film ID : ${movieId}`);
 }
 
 function showMovieDetails(filmId) {
@@ -193,6 +203,10 @@ async function showMovieDetails(movieId) {
     }
 }
 
+// Fermer la modale
+document.getElementById("close-modal").addEventListener("click", () => {
+    document.getElementById("modal").classList.add("hidden");
+});
 
 // Charger automatiquement les données lorsque la page est prête
 document.addEventListener("DOMContentLoaded", () => {
@@ -270,6 +284,7 @@ async function loadMovies(category, containerId) {
   document.addEventListener("DOMContentLoaded", () => {
     loadAllCategories();
   });
+
 
   // Ouvrir la modale
 document.querySelectorAll('.movie-button, .movie-image').forEach(item => {
