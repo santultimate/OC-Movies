@@ -9,28 +9,43 @@ body {
 
 header {
   background-color: #6e918e;
-  color: rgb(255, 253, 253);
+  color: #fff;
   padding: 20px;
-  text-align: center; /* Centre le texte */
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .header-content {
-  display: flex; /* Utiliser flexbox pour aligner logo et texte */
-  align-items: center; /* Aligne verticalement le logo et le texte */
-  justify-content: space-between; /* Pousse le texte au centre */
-  width: 100%; /* Assurez-vous que cela prend tout l'espace disponible */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
-
+/* Accessibilité pour les images */
 img {
-  margin-right: 100px; /* Espacement entre le logo et le texte */
-  width: 150px; /* Modifiez la largeur selon vos besoins */
-  height: auto; /* Pour garder les proportions */
+  max-width: 100%;
+  height: auto;
+  alt: "Description de l'image"; /* Remplacez ce texte par votre description */
 }
 
 
+/* En-tête */
 h1, h2, h3 {
-  font-weight: bold;
+  color: var(--title-color);
+  margin: 20px 0;
+  text-align: center; /* Centrer les titres pour un aspect moderne */
+}
+h1 {
+  font-size: 2.5rem; /* Titre principal plus grand */
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
 }
 
 main {
@@ -199,7 +214,7 @@ main {
   justify-content: space-between;
   gap: 20px;
   background-color: #f9f9f9;
-  border: 6px solid #0b0a0a;
+  border: 2px solid #6e918e;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -344,10 +359,10 @@ main {
 }
 
 /* Réactivité pour petits écrans */
-@media (max-width: 660px) {
+@media (max-width: 360px) {
   .modal-content {
-    width: 100%; /* Prend toute la largeur de l'écran */
-    max-height: 100%; /* S'étend jusqu'à la hauteur totale */
+    width: 90%; /* Prend toute la largeur de l'écran */
+    max-height: 90%; /* S'étend jusqu'à la hauteur totale */
     border-radius: 0; /* Supprime les coins arrondis pour un effet plein écran */
   }
 
